@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+int sc(int n){int dem=0;
+    while(n>0){
+        if(n%2==0)dem++;
+        n=n/10;
+    }
+              return dem;
+}
+int sl(int n){int dem=0;
+    while(n>0){
+        if(n%2==1)dem++;
+        n=n/10;
+    }
+              return dem;
+}
+bool comp(int a,int b){int c1=sc(a);int c2=sc(b);
+    if(c1!=c2){
+        return c1<c2;
+    }
+    else{
+        return a<b;
+    }
+}
+bool comp2(int a,int b){
+    int le1=sl(a);int le2=sl(b);
+    return le1<le2;
+}
+int main() {
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+     vector<int>v(a,a+n);
+    sort(a,a+n,comp);
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+    stable_sort(v.begin(),v.end(),comp2);
+    for(int x:v){
+        cout<<x<<" ";
+    }
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+}
