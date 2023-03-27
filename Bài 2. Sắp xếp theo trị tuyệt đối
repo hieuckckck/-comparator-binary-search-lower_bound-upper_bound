@@ -1,0 +1,39 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <bits/stdc++.h>
+#include <algorithm>
+using namespace std;
+int x;
+bool comp(int a,int b){
+    if(abs(a-x)!=abs(b-x)) return abs(a-x)<abs(b-x);
+    else return a<b;
+}
+bool comp2(int a,int b){
+    if(a%2==0&&b%2==0) return a<b;
+     else if(a%2!=0&&b%2!=0) return a>b;
+    else if(a%2==0&&b%2==1) return true;
+    return false;
+}
+
+int main() {
+    int n;
+    cin>>n;
+    cin>>x;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    vector<int>v(a,a+n);
+    sort(a,a+n,comp);
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+    sort(v.begin(),v.end(),comp2);
+    for(int i=0;i<v.size();i++){
+        cout<<v[i]<<" ";
+    }
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+}
